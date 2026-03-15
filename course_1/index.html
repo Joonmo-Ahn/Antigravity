@@ -4,30 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>새로운 아이디어</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <meta name="description" content="새로운 아이디어를 소개하는 멋진 웹페이지">
 </head>
 <body>
+    <header class="header">
+        <div class="logo">레이아웃 파싱 개발</div>
+        <nav class="nav-links">
+            <a href="#">소개</a>
+            <a href="#">기능</a>
+            <a href="#">문의</a>
+        </nav>
+    </header>
+
     <main class="container">
-        <div class="card">
-            <h1 id="main-title" class="title">새로운 아이디어</h1>
-            <div class="divider"></div>
-            <button id="btn-change" class="btn-replay">다시보기</button>
-        </div>
+        <section class="section">
+            <h2 class="section-title">핵심기능 소개</h2>
+            <div class="card">
+                <h1 id="main-title" class="title">새로운 아이디어</h1>
+                <div class="divider"></div>
+                <button id="btn-change" class="btn-replay">다시보기</button>
+            </div>
+        </section>
+
+        <section class="section" id="reviews">
+            <h2 class="section-title">최신 사용자 후기</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-profile">
+                        <img src="/Users/jmahn/.gemini/antigravity/brain/b5968705-bdab-4ece-868b-38aaf23cc414/profile_male_1773575530421.png" alt="김철수님" class="profile-img">
+                        <div class="author-info">
+                            <h4>김철수</h4>
+                            <p>시니어 프론트엔드 개발자</p>
+                        </div>
+                    </div>
+                    <p class="review-text">"기존의 번거로웠던 레이아웃 작업이 이 도구 덕분에 비약적으로 빨라졌습니다. 특히 동적 테마 전환 기능은 정말 놀랍네요."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-profile">
+                        <img src="/Users/jmahn/.gemini/antigravity/brain/b5968705-bdab-4ece-868b-38aaf23cc414/profile_female_1773575557777.png" alt="이영희님" class="profile-img">
+                        <div class="author-info">
+                            <h4>이영희</h4>
+                            <p>프로덕트 디자이너</p>
+                        </div>
+                    </div>
+                    <p class="review-text">"디자이너의 의도를 가장 완벽하게 구현해주는 레이아웃 엔진입니다. 부드러운 애니메이션과 세련된 감각이 돋보입니다."</p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        &copy; 2026 by AHN
+    </footer>
 
     <script>
         const titles = ["새로운 아이디어", "잘해보자", "멋있을거야"];
-        const bgClasses = ["", "bg-pink", "bg-green"];
-        const textClasses = ["", "text-pink", "text-green"];
+        const themeClasses = ["", "theme-pink", "theme-green"];
         let currentIndex = 0;
 
         const btn = document.getElementById('btn-change');
         const titleEl = document.getElementById('main-title');
-        const bodyEl = document.body;
+        const cardEl = document.querySelector('.card');
 
         btn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % titles.length;
@@ -35,11 +74,8 @@
             // Change Text
             titleEl.textContent = titles[currentIndex];
             
-            // Change Background Theme
-            bodyEl.className = bgClasses[currentIndex];
-            
-            // Change Title Color Theme
-            titleEl.className = `title ${textClasses[currentIndex]}`;
+            // Change Theme (Text & Button colors)
+            cardEl.className = `card ${themeClasses[currentIndex]}`;
 
             // Update Button Text
             btn.textContent = currentIndex === 0 ? "다시보기" : "다음으로";

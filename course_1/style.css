@@ -1,12 +1,16 @@
 :root {
-    --bg-color: #a5b4fc;
-    --accent-color: #ffffff;
-    --text-color: #1e293b;
-    --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
-    --gradient: linear-gradient(135deg, #a5b4fc 0%, #d8b4fe 100%);
-    --btn-color: #4f46e5;
-    --pink-gradient: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%);
-    --green-gradient: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+    --main-green: #bbf7d0; /* Slightly darker soft green */
+    --main-green-hover: #86efac;
+    --secondary-dark: #0f172a; /* Dark slate */
+    --accent-green: #059669; /* Darker primary green */
+    --text-main: #1e293b;
+    --text-light: #94a3b8;
+    --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #bbf7d0 100%);
+    --font-main: 'Noto Sans KR', sans-serif;
+    
+    /* Reusing for sync logic but adjusted for new theme */
+    --pink-accent: #f472b6;
+    --green-accent: #047857; /* Even darker green for sync state */
 }
 
 * {
@@ -16,20 +20,180 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg-color);
-    background: var(--gradient);
-    color: var(--text-color);
+    flex-direction: column;
+    background: var(--bg-gradient);
+    color: var(--text-main);
     font-family: var(--font-main);
-    overflow: hidden;
+    font-weight: 400; /* Regular body text */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    padding: 15px 50px;
+    background: rgba(15, 23, 42, 0.95); /* Dark background */
+    backdrop-filter: blur(10px);
+    color: var(--main-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    transition: all 0.3s ease;
+}
+
+.header .logo {
+    font-size: 1.25rem;
+    font-weight: 800; /* Extra bold for logo */
+    letter-spacing: -0.5px;
+}
+
+.nav-links a {
+    color: var(--main-green);
+    text-decoration: none;
+    font-weight: 500; /* Medium for nav items */
+    font-size: 0.95rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    background: #1e293b;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: auto;
 }
 
 .container {
-    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     perspective: 1000px;
+}
+
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.section {
+    padding: 100px 50px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800; /* Bold titles */
+    margin-bottom: 50px;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.review-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.author-info h4 {
+    margin: 0;
+    font-weight: 700; /* Bold for names */
+    color: var(--text-main);
+}
+
+.author-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 400; /* Regular for roles */
+    color: #64748b;
+}
+
+.review-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 400; /* Regular for reviews */
+    font-style: normal; /* Better readability than italic in Korean */
+    color: #334155;
 }
 
 .title {
@@ -46,10 +210,11 @@ body {
 .card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-    padding: 60px 80px;
+    padding: 40px 60px;
     border-radius: 32px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.8);
+    display: inline-block;
 }
 
 .divider {
@@ -65,27 +230,27 @@ body {
 .btn-replay {
     display: inline-block;
     padding: 14px 32px;
-    background: var(--btn-color);
+    background: var(--accent-green);
     color: white;
     border: none;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);
     opacity: 0;
     animation: fadeInUp 0.8s 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .btn-replay:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
-    background: #4338ca;
+    transform: translateY(-5px) scale(1.1); /* More noticeable scaling */
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+    background: var(--secondary-dark) !important; 
 }
 
 .btn-replay:active {
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 @keyframes fadeInUp {
@@ -102,25 +267,80 @@ body {
 }
 
 /* Dynamic Theme Classes */
-body.bg-pink {
-    background: var(--pink-gradient);
+.theme-pink .title { color: var(--pink-accent); }
+.theme-pink .btn-replay { 
+    background: var(--pink-accent); 
+    box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+}
+.theme-pink .btn-replay:hover { 
+    background: #be185d !important; 
 }
 
-body.bg-green {
-    background: var(--green-gradient);
+.theme-green .title { color: var(--green-accent); }
+.theme-green .btn-replay { 
+    background: var(--green-accent); 
+    box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
 }
-
-.title.text-pink {
-    color: #db2777;
-}
-
-.title.text-green {
-    color: #15803d;
+.theme-green .btn-replay:hover { 
+    background: #064e3b !important; 
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    body {
+        font-size: 0.95rem; /* Slightly smaller base font */
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        padding: 40px 30px; /* Adjusted for better spacing */
+        width: 100%;
+        max-width: 90%;
+    }
+
     .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .btn-replay {
+        padding: 18px 48px; /* Larger touch target for fingers */
+        font-size: 1.1rem;
+        width: 80%; /* Wider on mobile */
+    }
+
+    .reviews-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+
+    .review-text {
+        font-size: 0.95rem; /* Reduced font for readability */
     }
 }
