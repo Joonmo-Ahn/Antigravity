@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 첫번째 아이디어</title>
+    <title>새로운 아이디어</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="나의 첫번째 아이디어를 소개하는 멋진 웹페이지">
+    <meta name="description" content="새로운 아이디어를 소개하는 멋진 웹페이지">
 </head>
 <body>
     <main class="container">
-        <h1 id="main-title" class="title">나의 첫번째 아이디어</h1>
-        <div class="divider"></div>
+        <div class="card">
+            <h1 id="main-title" class="title">새로운 아이디어</h1>
+            <div class="divider"></div>
+            <button id="btn-change" class="btn-replay">다시보기</button>
+        </div>
     </main>
+
+    <script>
+        const titles = ["새로운 아이디어", "잘해보자", "멋있을거야"];
+        const bgClasses = ["", "bg-pink", "bg-green"];
+        const textClasses = ["", "text-pink", "text-green"];
+        let currentIndex = 0;
+
+        const btn = document.getElementById('btn-change');
+        const titleEl = document.getElementById('main-title');
+        const bodyEl = document.body;
+
+        btn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % titles.length;
+            
+            // Change Text
+            titleEl.textContent = titles[currentIndex];
+            
+            // Change Background Theme
+            bodyEl.className = bgClasses[currentIndex];
+            
+            // Change Title Color Theme
+            titleEl.className = `title ${textClasses[currentIndex]}`;
+
+            // Update Button Text
+            btn.textContent = currentIndex === 0 ? "다시보기" : "다음으로";
+        });
+    </script>
 </body>
 </html>
