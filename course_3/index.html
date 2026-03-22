@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진짜 성격 찾기 | MBTI Type Test</title>
+    <meta name="description" content="나의 진짜 성격은? 8가지 간단한 질문으로 빠르게 분석해보세요.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-radial"></div>
+
+    <main class="container">
+        <!-- 1. 온보딩 섹션 -->
+        <section class="onboarding-card" id="onboardingSection">
+            <div class="badge">MBTI Personality Test</div>
+            <h1 class="title">나의 진짜 성격은?</h1>
+            <p class="subtitle">8가지 간단한 질문으로 알아보는<br>나의 MBTI 유형</p>
+            
+            <button class="start-btn" id="startBtn">
+                <span>테스트 시작하기</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </section>
+
+        <!-- 2. 질문 섹션 -->
+        <section class="question-card" id="questionSection" style="display: none;">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="q-number" id="qNumber">Q1</div>
+            <h2 class="q-title" id="qTitle">주말에 약속이 없다면?</h2>
+            
+            <div class="choices-container">
+                <button class="choice-btn" id="choiceA">집에 있는다</button>
+                <button class="choice-btn" id="choiceB">약속을 잡고 밖에 나간다</button>
+            </div>
+        </section>
+        
+        <!-- 3. 결과 섹션 -->
+        <section class="result-card" id="resultSection" style="display: none;">
+            <div class="badge">Your Character</div>
+            <div class="sprite-container">
+                <div class="mbti-sprite" id="resultImage"></div>
+            </div>
+            <div class="result-mbti" id="resultMbti">ENTJ</div>
+            <h2 class="result-title" id="resultTitle">당당한 리더</h2>
+            <div class="result-desc" id="resultDesc">
+                당신은 철저한 분석과 계획을 즐기며 새로운 도전을 멈추지 않는 스타일입니다.
+            </div>
+            <button class="retry-btn" id="retryBtn">다시 테스트하기</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
