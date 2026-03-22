@@ -8,7 +8,7 @@
 
 현재까지 세 가지 프로젝트를 단계별로 구현 완료했다.
 
-### 🧬 [Course 3: MBTI 성가유형 테스트 웹 앱 (Personality Test)](./course_3/)
+### 🧬 [Course 3: MBTI 성격유형 테스트 웹 앱 (Personality Test)](./course_3/)
 8개 질문으로 내 진짜 MBTI를 확인하는 세련된 성격 테스트 프로젝트다.
 
 -   **핵심 기능**:
