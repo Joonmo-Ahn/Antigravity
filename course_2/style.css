@@ -1,0 +1,289 @@
+/* ==========================================
+   Project: Lunch Vote Plus (Aesthetics Design)
+   Author: Joonmo Ahn
+   ========================================== */
+
+/* 1. 기본 스타일 및 변수 설정 (Root Variables & Reset) */
+:root {
+    --primary-color: #FF5E5B;      /* 메인 포인트 색상 (산호색) */
+    --secondary-color: #2EC4B6;    /* 보조 색상 (터키색) */
+    --accent-color: #FFD23F;       /* 강조 색상 (노란색) */
+    --bg-dark: #0F172A;            /* 배경 색상 (네이비) */
+    --card-bg: rgba(255, 255, 255, 0.05); /* 카드 배경 (투명도) */
+    --glass-border: rgba(255, 255, 255, 0.1); /* 유리 테두리 */
+    --text-main: #F8FAFC;          /* 메인 텍스트 (흰색계열) */
+    --text-dim: #94A3B8;           /* 보조 텍스트 (회색계열) */
+    --font-heading: 'Outfit', 'Noto Sans KR', sans-serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --border: rgba(255, 255, 255, 0.18);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Background Decor */
+
+.background-decor {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    width: 30vw;
+    height: 30vw;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(50px);
+}
+
+.background-decor::after {
+    content: '';
+    position: absolute;
+    bottom: -40vh;
+    left: -30vw;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(46, 196, 182, 0.15) 0%, transparent 70%);
+    filter: blur(50px);
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+
+.header {
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.title span {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Menu Grid */
+
+.menu-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+}
+
+.menu-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.menu-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: var(--primary-light);
+}
+
+.menu-card.selected {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+.menu-card.selected::before {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--primary);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 2.5rem;
+    transition: var(--transition);
+}
+
+.menu-card:hover .menu-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.menu-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Vote Button */
+
+.vote-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.vote-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: var(--text-muted);
+}
+
+.vote-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.vote-button:active {
+    transform: translateY(1px);
+}
+
+/* Results Area */
+
+.results-area {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+.result-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.result-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.result-bar-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.result-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 5px;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.total-info {
+    margin-top: 2rem;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
